@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Person</title>
+</head>
+<body>
+
+    <h3>Lista de Pessoas</h3>
+    <a href="{% url 'logout' %}">logout</a>
+    <table cellspacing="6" border="0">
+    <ul>
+        {% for p in persons %}
+        <tr>
+            <td><li><a href="{% url 'person_update' p.id %}">{{ p.first_name }} {{ p.last_name }}</a></li></td>
+            <td><a href="{% url 'person_delete' p.id %}">excluir</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h5>{{ persons.count }} registros encontrados</h5>
+    <br>
+    <a href="{% url 'person_new' %}">Incluir pessoas</a>
+</body>
+</html>
